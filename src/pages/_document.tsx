@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
 const cspHashOf = (text) => {
   const hash = crypto.createHash('sha256');
   hash.update(text);
@@ -106,7 +105,26 @@ const getCspContent = (context) => {
 };
 
 export default class MyDocument extends Document {
+  // static async getInitialProps(ctx: DocumentContext) {
+  //   const initialProps = await Document.getInitialProps(ctx);
+  //   const colorModePreference = window.localStorage.getItem(
+  //     'colorMode'
+  //   ) as ColorMode;
+  //   return {
+  //     ...initialProps,
+  //     ...{ colorMode: colorModePreference }
+  //   };
+  // }
+
   render() {
+    const setInitialColorMode = `
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var colorModePreference = localStorage.getItem('colorMode');
+      if(!colorModePreference) {
+        window.localStorage.setItem('colorMode', prefersDarkMode ? 'dark' : 'light');
+      }
+    `;
+
     return (
       <Html lang="en">
         <Head>
@@ -118,6 +136,7 @@ export default class MyDocument extends Document {
             src="https://prod.assets.shortbread.aws.dev/shortbread.js"
             defer
           ></script>
+          <script dangerouslySetInnerHTML={{ __html: setInitialColorMode }} />
         </Head>
         <body>
           <Main />
