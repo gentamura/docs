@@ -2,7 +2,18 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Create, update, and delete application data',
-  description: 'Mutate application data in an API by generating the client, adding items, updating existing items, deleting items, troubleshooting unauthorized errors, and canceling requests.'
+  platforms: [
+    'android',
+    'angular',
+    'flutter',
+    'javascript',
+    'nextjs',
+    'react',
+    'react-native',
+    'swift',
+    'vue'
+  ],
+description: 'Mutate application data in an API by generating the client, adding items, updating existing items, deleting items, troubleshooting unauthorized errors, and canceling requests.'
 };
 
 export const getStaticPaths = async () => {
@@ -58,7 +69,18 @@ const client = generateClient<Schema>();
 
 const todoDetails = {
   id: 'some_id',
-  description: 'Updated description'
+  platforms: [
+    'android',
+    'angular',
+    'flutter',
+    'javascript',
+    'nextjs',
+    'react',
+    'react-native',
+    'swift',
+    'vue'
+  ],
+description: 'Updated description'
 };
 
 const { data: updatedTodo, errors } = await client.models.Todo.update(todo)
