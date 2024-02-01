@@ -1,5 +1,4 @@
 import { getChildPageNodes } from '@/utils/getChildPageNodes';
-
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
@@ -7,6 +6,10 @@ export const meta = {
   description:
     'Learn about the capabilities of AWS Amplify and how they can be used together or independently for fullstack app development.',
   route: '/gen2/how-amplify-works'
+};
+
+export const getStaticPaths = async () => {
+  return getCustomStaticPath(meta.platforms);
 };
 
 export function getStaticProps(context) {

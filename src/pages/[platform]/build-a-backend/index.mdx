@@ -1,11 +1,14 @@
 import { getChildPageNodes } from '@/utils/getChildPageNodes';
-
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Build & connect backend',
   description: 'Configure and customize authentication, data, storage, and functions to build a backend for your application.',
   route: '/gen2/build-a-backend'
+};
+
+export const getStaticPaths = async () => {
+  return getCustomStaticPath(meta.platforms);
 };
 
 export function getStaticProps(context) {

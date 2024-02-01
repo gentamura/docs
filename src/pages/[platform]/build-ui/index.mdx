@@ -1,11 +1,14 @@
 import { getChildPageNodes } from '@/utils/getChildPageNodes';
-
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Build UI',
   description: 'Learn how to build and customize your UI.',
   route: '/gen2/build-ui'
+};
+
+export const getStaticPaths = async () => {
+  return getCustomStaticPath(meta.platforms);
 };
 
 export function getStaticProps(context) {

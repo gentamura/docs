@@ -1,11 +1,14 @@
 import { getChildPageNodes } from '@/utils/getChildPageNodes';
-
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Fullstack workflows',
   description: 'Overview of fullstack branching capabilities.',
   route: '/gen2/deploy-and-host/fullstack-branching'
+};
+
+export const getStaticPaths = async () => {
+  return getCustomStaticPath(meta.platforms);
 };
 
 export function getStaticProps(context) {
