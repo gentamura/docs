@@ -215,7 +215,7 @@ export const Layout = ({
         <meta
           property="og:image"
           content={`https://docs.amplify.aws/assets/${
-            isGen2 ? 'gen2' : 'classic'
+            isGen1 ? 'classic' : 'gen2'
           }-og.png`}
           key="og:image"
         />
@@ -230,7 +230,7 @@ export const Layout = ({
         <meta
           property="twitter:image"
           content={`https://docs.amplify.aws/assets/${
-            isGen2 ? 'gen2' : 'classic'
+            isGen1 ? 'classic' : 'gen2'
           }-og.png`}
           key="twitter:image"
         />
@@ -322,14 +322,14 @@ export const Layout = ({
                       <IconDoubleChevron />
                       <VisuallyHidden>Close menu</VisuallyHidden>
                     </Button>
-                    {isGen2 ? null : (
-                      <div className="layout-sidebar-platform">
-                        <PlatformNavigator
-                          currentPlatform={currentPlatform}
-                          isPrev={isPrev}
-                        />
-                      </div>
-                    )}
+
+                    <div className="layout-sidebar-platform">
+                      <PlatformNavigator
+                        currentPlatform={currentPlatform}
+                        isPrev={isPrev}
+                        isGen1={isGen1}
+                      />
+                    </div>
 
                     <div className="layout-sidebar-menu">
                       <Menu

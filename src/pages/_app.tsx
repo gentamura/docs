@@ -119,33 +119,7 @@ function MyApp({ Component, pageProps }) {
           sizes="192x192"
           href="/assets/icon/android-icon-192x192.png"
         />
-        {router.route.startsWith('/gen2') ? (
-          <>
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="/assets/icon/favicon-purple-16x16.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="/assets/icon/favicon-purple-32x32.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="96x96"
-              href="/assets/icon/favicon-purple-96x96.png"
-            />
-            <link
-              rel="icon"
-              type="image/x-icon"
-              href="/assets/icon/favicon-purple.ico"
-            />
-          </>
-        ) : (
+        {router.route.startsWith('/gen1') ? (
           <>
             <link
               rel="icon"
@@ -169,6 +143,32 @@ function MyApp({ Component, pageProps }) {
               rel="icon"
               type="image/x-icon"
               href="/assets/icon/favicon-teal.ico"
+            />
+          </>
+        ) : (
+          <>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/assets/icon/favicon-purple-16x16.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/assets/icon/favicon-purple-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="96x96"
+              href="/assets/icon/favicon-purple-96x96.png"
+            />
+            <link
+              rel="icon"
+              type="image/x-icon"
+              href="/assets/icon/favicon-purple.ico"
             />
           </>
         )}

@@ -9,7 +9,7 @@ import { VersionSwitcher } from '../VersionSwitcher';
 import { PLATFORM_VERSIONS, PLATFORM_DISPLAY_NAMES } from '@/data/platforms';
 import { useTabKeyDetection } from '@/utils/useTabKeyDetection';
 
-export function PlatformNavigator({ currentPlatform, isPrev }) {
+export function PlatformNavigator({ currentPlatform, isPrev, isGen1 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -82,13 +82,15 @@ export function PlatformNavigator({ currentPlatform, isPrev }) {
               className={isOpen ? '' : 'icon-rotate-90-reverse'}
             />
           </Button>
-          {PLATFORM_VERSIONS[currentPlatform] && (
-            <VersionSwitcher
-              platform={currentPlatform}
-              isPrev={isPrev}
-              flex="1 1 0"
-            />
-          )}
+          {isGen1
+            ? PLATFORM_VERSIONS[currentPlatform] && (
+                <VersionSwitcher
+                  platform={currentPlatform}
+                  isPrev={isPrev}
+                  flex="1 1 0"
+                />
+              )
+            : null}
         </Flex>
         <View
           className={classNames('popover', {
