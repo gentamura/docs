@@ -45,7 +45,7 @@ import '@docsearch/css';
 import { PageLastUpdated } from '../PageLastUpdated';
 import Feedback from '../Feedback';
 import RepoActions from '../Menu/RepoActions';
-import { Banner } from '@/components/Banner';
+// import { Banner } from '@/components/Banner';
 import { usePathWithoutHash } from '@/utils/usePathWithoutHash';
 import {
   NextPrevious,
@@ -360,7 +360,7 @@ export const Layout = ({
                   {showBreadcrumbs ? (
                     <Breadcrumbs route={pathname} platform={currentPlatform} />
                   ) : null}
-                  {shouldShowGen2Banner ? <Banner /> : null}
+                  {/* {shouldShowGen2Banner ? <Banner /> : null} */}
                   {useCustomTitle ? null : (
                     <Heading level={1}>{pageTitle}</Heading>
                   )}
