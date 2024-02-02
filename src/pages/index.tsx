@@ -4,7 +4,7 @@ import { GetStartedPopover } from '@/components/GetStartedPopover';
 import { IconChevron } from '@/components/Icons';
 import { DEFAULT_PLATFORM } from '@/data/platforms';
 import { InternalLinkButton } from '@/components/InternalLinkButton';
-import PlatformFeatureList from '../components/FeatureLists/PlatformFeatureList';
+import PlatformFeatureList from '@/components/FeatureLists/PlatformFeatureList';
 import LinkCards from '@/components/LinkCards';
 
 const meta = {
