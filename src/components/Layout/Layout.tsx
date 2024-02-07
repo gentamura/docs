@@ -93,8 +93,8 @@ export const Layout = ({
   let currentPlatform = isGen2 ? undefined : DEFAULT_PLATFORM;
   const isContributor = asPathWithNoHash.split('/')[1] === 'contribute';
   const currentGlobalNavMenuItem = isContributor ? 'Contribute' : 'Docs';
-  const isPrev = asPathWithNoHash.split('/')[2] === 'prev';
-
+  const isPrev = asPathWithNoHash.split('/')[3] === 'prev';
+  console.log('isPrev?', isPrev);
   const handleColorModeChange = (mode: ColorMode) => {
     setColorMode(mode);
     if (mode !== 'system') {
@@ -115,20 +115,34 @@ export const Layout = ({
       !isOverview
   );
 
-  if (!isGen2) {
-    // [platform] will always be the very first subpath right?
-    // when using `router.asPath` it returns a string that starts with a '/'
-    // To get the "platform" the client was trying to visit, we have to get the string at index 1
-    // Doing this because when visiting a 404 page, there is no `router.query.platform`, so we have
-    // to check where the user was trying to visit from
-    const asPathPlatform = asPathWithNoHash.split('/')[1] as Platform;
+  // if (!isGen2) {
+  //   // [platform] will always be the very first subpath right?
+  //   // when using `router.asPath` it returns a string that starts with a '/'
+  //   // To get the "platform" the client was trying to visit, we have to get the string at index 1
+  //   // Doing this because when visiting a 404 page, there is no `router.query.platform`, so we have
+  //   // to check where the user was trying to visit from
+  //   const asPathPlatform = asPathWithNoHash.split('/')[1] as Platform;
 
-    currentPlatform = platform
-      ? platform
-      : PLATFORMS.includes(asPathPlatform)
-      ? asPathPlatform
-      : DEFAULT_PLATFORM;
-  }
+  //   currentPlatform = platform
+  //     ? platform
+  //     : PLATFORMS.includes(asPathPlatform)
+  //     ? asPathPlatform
+  //     : DEFAULT_PLATFORM;
+  // }
+
+  // when using `router.asPath` it returns a string that starts with a '/'
+  // To get the "platform" the client was trying to visit, we have to get the string at index 1
+  // Doing this because when visiting a 404 page, there is no `router.query.platform`, so we have
+  // to check where the user was trying to visit from
+  const asPathPlatform = asPathWithNoHash.split('/')[
+    isGen1 ? 2 : 1
+  ] as Platform;
+
+  currentPlatform = platform
+    ? platform
+    : PLATFORMS.includes(asPathPlatform)
+    ? asPathPlatform
+    : DEFAULT_PLATFORM;
 
   const title = [
     pageTitle,

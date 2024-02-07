@@ -11,12 +11,13 @@ type MenuProps = {
 };
 
 const invalidChildren = [
-  '/[platform]/prev',
-  '/[platform]/tools/cli-legacy',
-  '/[platform]/sdk'
+  '/gen1/[platform]/prev',
+  '/gen1/[platform]/tools/cli-legacy',
+  '/gen1/[platform]/sdk'
 ];
 
 export function Menu({ currentPlatform, path }: MenuProps): ReactElement {
+  console.log('path: ', path.split('/'));
   const isGen1 = path.split('/')[1] === 'gen1';
   const isPrev = path.split('/')[3] === 'prev';
   const isLegacy = path.split('/')[4] === 'cli-legacy';
@@ -24,14 +25,14 @@ export function Menu({ currentPlatform, path }: MenuProps): ReactElement {
   let rootMenuNode, childrenNodes, baseMenu;
   if (isLegacy) {
     rootMenuNode = {
-      children: [findDirectoryNode('/[platform]/tools/cli-legacy')]
+      children: [findDirectoryNode('/gen1/[platform]/tools/cli-legacy')]
     };
     childrenNodes = rootMenuNode.children;
   } else if (isSDK) {
-    rootMenuNode = { children: [findDirectoryNode('/[platform]/sdk')] };
+    rootMenuNode = { children: [findDirectoryNode('/gen1/[platform]/sdk')] };
     childrenNodes = rootMenuNode.children;
   } else if (isGen1) {
-    rootMenuNode = findDirectoryNode('/gen1');
+    rootMenuNode = findDirectoryNode('/gen1/[platform]');
     childrenNodes = rootMenuNode.children;
   } else {
     baseMenu = true;
@@ -45,6 +46,7 @@ export function Menu({ currentPlatform, path }: MenuProps): ReactElement {
   }
 
   if (isPrev) {
+    console.log('on a prev url!~');
     // replace build a backend with previous build a backend
     const buildABackend = findDirectoryNode(PREV_BUILD_A_BACKEND);
     childrenNodes = childrenNodes?.map((child) => {
