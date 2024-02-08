@@ -94,7 +94,6 @@ export const Layout = ({
   const isContributor = asPathWithNoHash.split('/')[1] === 'contribute';
   const currentGlobalNavMenuItem = isContributor ? 'Contribute' : 'Docs';
   const isPrev = asPathWithNoHash.split('/')[3] === 'prev';
-  console.log('isPrev?', isPrev);
   const handleColorModeChange = (mode: ColorMode) => {
     setColorMode(mode);
     if (mode !== 'system') {
