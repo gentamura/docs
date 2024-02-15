@@ -12,7 +12,7 @@ describe('Command', () => {
       flags: [
         {
           description:
-            'Shows verbose details, including cloudformation differences',
+            'Shows verbose details, including cloudformation differences.',
           long: 'verbose',
           short: 'v'
         },
